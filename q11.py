@@ -11,3 +11,12 @@
 ## E,2,3
 ## E,3,3
 ##
+import pandas
+base = pandas.read_csv("data.csv", sep="\t", header=None)
+
+#Contar los registros de los campos 3 y 4 separados por ,
+base['count3'] = base[3].str.split(",").str.len()
+base['count4'] = base[4].str.split(",").str.len()
+
+basefinal = base[[0,'count3','count4']]
+print(basefinal)
